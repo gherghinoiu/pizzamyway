@@ -93,5 +93,3 @@ if (!$link) {
 
 // Set charset to UTF8
 mysqli_set_charset($link, "utf8");
-
-?>

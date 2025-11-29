@@ -18,6 +18,7 @@
                     </li>-->
                     <li class="list-group-item menu-item"><a href="catering-myway-craiova">Catering</a></li>
                     <li class="list-group-item menu-item"><a href="contact">Contact</a></li>
+                    <li class="list-group-item menu-item"><a href="cart.php">Cos Cumparaturi <span class="badge cart-count-badge"><?php echo get_cart_count(); ?></span></a></li>
                 </ul>
             </div>
             <div class="col-xs-3"></div>
@@ -62,4 +63,4 @@
 <div align="center">
     <a class="start" href="#start"><i class="fa fa-angle-down"></i></a>
 </div>
-<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
