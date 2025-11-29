@@ -225,7 +225,10 @@ include("inc/footer.php");
                         } else {
                             alert('Eroare: ' + response.message);
                         }
-                    }, 'json');
+                    }, 'json').fail(function(xhr, status, error) {
+                        console.error("Cart error:", xhr.responseText);
+                        alert('Eroare la adaugarea in cos. Va rugam incercati din nou.');
+                    });
                 });
 
                 $(".fancybox-thumb").fancybox({

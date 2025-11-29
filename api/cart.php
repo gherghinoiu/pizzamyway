@@ -72,4 +72,3 @@ switch ($action) {
         echo json_encode(['status' => 'error', 'message' => 'Actiune invalida']);
         break;
 }
-?>
