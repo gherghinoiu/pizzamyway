@@ -1,5 +1,5 @@
 <?php
-include('../inc/header.php');
+include('../inc/config.php');
 include('../inc/cart_functions.php');
 
 header('Content-Type: application/json');
