@@ -222,6 +222,9 @@ include("inc/footer.php");
                     }, function(response) {
                         if(response.status === 'success') {
                             alert('Produsul a fost adaugat in cos!');
+                            if(response.cart_count !== undefined) {
+                                $('.cart-count-badge').text(response.cart_count);
+                            }
                         } else {
                             alert('Eroare: ' + response.message);
                         }

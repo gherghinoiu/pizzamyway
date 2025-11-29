@@ -9,6 +9,7 @@
 					<li class="list-group-item menu-item"><a href="pizza-craiova">Pizza</a></li>
                     <li class="list-group-item menu-item"><a href="catering-myway-craiova">Catering</a></li>
                     <li class="list-group-item menu-item"><a href="contact">Contact</a></li>
+                    <li class="list-group-item menu-item"><a href="cart.php">Cos Cumparaturi <span class="badge cart-count-badge"><?php echo get_cart_count(); ?></span></a></li>
                 </ul>
             </div>
             <div class="col-xs-3"></div>
@@ -46,4 +47,4 @@ echo "style='display:none !important;'";
     </div>
 </nav>
 
-<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
