@@ -61,4 +61,3 @@ function get_cart_count() {
 function clear_cart() {
     $_SESSION['cart'] = [];
 }
-?>
