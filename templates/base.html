@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}Pizza &amp; Catering MyWay Craiova{% endblock %}</title>
+        <meta name="description" content="{% block description %}Pizza si catering in Craiova numai la MyWay. Te asteptam cu cele mai bune preparate la cele mai bune preturi. Comanda acum!{% endblock %}">
+        <meta name="keywords" content="pizza, craiova, pizza craiova, catering, catering craiova, myway">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/bootstrap.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/animate.css') }}">
+        <link rel="icon" href="{{ url_for('static', filename='assets/images/favicon.png') }}" type="image/png">
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        <header class="{% block header_class %}head{% endblock %}">
+            {% include 'includes/menu.html' %}
+            {% block header_content %}{% endblock %}
+        </header>
+
+        {% block content %}{% endblock %}
+
+        <footer>
+             <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3>Despre noi</h3>
+                        <div class="separator-footer"></div>
+                        <p>Pizzeria My Way a aparut pe piata craioveana in dorinta de a oferi produse de calitate superioara, obtinute din ingrediente mereu proaspete.</p>
+                        <p>Va asteptam sa ne treceti pragul sau sa comandati telefonic, produsele noastre fiind pregatite special pentru dumneavoastra, la cele mai inalte standarde de calitate.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Program</h3>
+                        <div class="separator-footer"></div>
+                        <p>Luni - Vineri: 09:00 - 23:00</p>
+                        <p>Sambata: 10:00 - 23:00</p>
+                        <p>Duminica: 10:00 - 23:00</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Contact</h3>
+                        <div class="separator-footer"></div>
+                        <p><i class="fa fa-map-marker"></i> Craiova, Str. Imparatul Traian Nr. 55</p>
+                        <p><i class="fa fa-phone"></i> 0351.176.968</p>
+                        <p><i class="fa fa-phone"></i> 0741.588.985</p>
+                        <p><i class="fa fa-envelope"></i> office@pizzamyway.ro</p>
+                    </div>
+                </div>
+            </div>
+            <div class="subfooter">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>&copy; 2016-2022 Pizza MyWay. Toate drepturile rezervate.</p>
+                        </div>
+                        <div class="col-md-6 text-right">
+                             <a href="https://anpc.ro/" target="_blank"><img src="https://anpc.ro/assets/images/anpc_sal.png" alt="ANPC SAL" style="height: 30px;"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='assets/js/custom.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='assets/plugins/fancybox/jquery.fancybox.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='assets/plugins/fancybox/jquery.mousewheel-3.0.6.pack.js') }}"></script>
+
+        {% block scripts %}{% endblock %}
+    </body>
+</html>

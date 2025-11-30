@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block title %}Cos Cumparaturi - MyWay Craiova{% endblock %}
+{% block description %}Cosul tau de cumparaturi la MyWay.{% endblock %}
+
+{% block head %}
+    <style>
+        .cart-table th { background: #f8f8f8; }
+        .cart-table td { vertical-align: middle !important; }
+        .cart-total { font-size: 1.2em; font-weight: bold; }
+        .btn-checkout { background-color: #B42C07; color: white; border: none; padding: 10px 20px; font-size: 1.1em; }
+        .btn-checkout:hover { background-color: #922406; color: white; }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <section class="cart-section" style="padding: 50px 0;">
+        <div class="container">
+            <h3 class="title">Cosul de cumparaturi</h3>
+            <div class="separator" style="margin-bottom: 30px;"></div>
+
+            {% if not cart_items %}
+                <div class="alert alert-info text-center">
+                    <h4>Cosul tau este gol.</h4>
+                    <p>Mergi la <a href="{{ url_for('category', category_name='pizza-craiova') }}">meniu</a> pentru a adauga produse.</p>
+                </div>
+            {% else %}
+                <div class="table-responsive">
+                    <table class="table table-bordered cart-table">
+                        <thead>
+                            <tr>
+                                <th>Produs</th>
+                                <th>Pret</th>
+                                <th>Cantitate</th>
+                                <th>Total</th>
+                                <th>Actiuni</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for id, item in cart_items.items() %}
+                            <tr id="row-{{ id }}">
+                                <td>
+                                    {% if item.image %}
+                                        <img src="{{ url_for('static', filename='assets/images/produse/' + item.image) }}" style="width: 50px; margin-right: 10px;">
+                                    {% endif %}
+                                    {{ item.name }}
+                                </td>
+                                <td>{{ item.price }} lei</td>
+                                <td>
+                                    <input type="number" min="1" value="{{ item.quantity }}" class="form-control" style="width: 70px;" onchange="updateCart('{{ id }}', this.value)">
+                                </td>
+                                <td><span id="total-{{ id }}">{{ item.price * item.quantity }}</span> lei</td>
+                                <td>
+                                    <button class="btn btn-danger btn-sm" onclick="removeFromCart('{{ id }}')"><i class="fa fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3" class="text-right cart-total">Total General:</td>
+                                <td colspan="2" class="cart-total"><span id="cart-grand-total">{{ cart_total }}</span> lei</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <a href="{{ url_for('category', category_name='pizza-craiova') }}" class="btn btn-default"><i class="fa fa-arrow-left"></i> Continua cumparaturile</a>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <a href="{{ url_for('checkout') }}" class="btn btn-checkout">Finalizeaza Comanda <i class="fa fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+    function updateCart(id, quantity) {
+        $.post('/api/cart', {
+            action: 'update',
+            id: id,
+            quantity: quantity
+        }, function(response) {
+            if(response.status === 'success') {
+                location.reload(); 
+            } else {
+                alert(response.message);
+            }
+        }, 'json');
+    }
+
+    function removeFromCart(id) {
+        if(confirm('Esti sigur ca vrei sa stergi acest produs?')) {
+            $.post('/api/cart', {
+                action: 'remove',
+                id: id
+            }, function(response) {
+                if(response.status === 'success') {
+                    location.reload();
+                }
+            }, 'json');
+        }
+    }
+    </script>
+{% endblock %}

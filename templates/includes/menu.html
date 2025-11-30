@@ -1,0 +1,31 @@
+<div class="nav-home">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-3"></div>
+            <div class="col-xs-6">
+                <ul class="list-group menu-set">
+                    <li class="list-group-item menu-item"><a href="{{ url_for('index') }}">Acasa</a></li>
+                    <li class="list-group-item menu-item"><a href="{{ url_for('about') }}">Despre noi</a></li>
+                    <li class="list-group-item menu-item"><a href="{{ url_for('category', category_name='pizza') }}">Pizza</a></li>
+                    <li class="list-group-item menu-item"><a href="{{ url_for('category', category_name='catering-myway-craiova') }}">Catering</a></li>
+                    <li class="list-group-item menu-item"><a href="{{ url_for('contact') }}">Contact</a></li>
+                    <li class="list-group-item menu-item"><a href="{{ url_for('cart') }}">Cos Cumparaturi <span class="badge cart-count-badge">{{ session.get('cart', {}) | length }}</span></a></li>
+                </ul>
+            </div>
+            <div class="col-xs-3"></div>
+        </div>
+    </div>
+</div>
+
+<nav>
+<a id="expand-menu" href="#"></a>
+<a id="close-menu" href="#"><i class="fa fa-times"></i></a>
+<a href="{{ url_for('index') }}" class="logo-img"><img src="{{ url_for('static', filename='assets/images/logo-pizza-myway.png') }}" alt="Logo Pizza MyWay"/></a>
+ <div class="phone-right2 pull-right">
+        <h4 class="comenzi visible-lg">Comenzi</h4>
+        <a class="" href="#">0351.176.968</a>
+        <a class="" href="#">0741.588.985</a><br class="visible-lg">
+        <a class="" href="#">0760.282.820</a><br/>
+        <!-- App links if needed -->
+    </div>
+</nav>

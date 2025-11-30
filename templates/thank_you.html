@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Comanda Plasata - Pizza MyWay Craiova{% endblock %}
+{% block content %}
+<section class="thank-you" style="padding: 100px 0; text-align: center;">
+    <div class="container">
+        <i class="fa fa-check-circle" style="font-size: 80px; color: #28a745; margin-bottom: 20px;"></i>
+        <h3 class="title">Multumim pentru comanda!</h3>
+        <p>Comanda dumneavoastra #{{ order_id }} a fost inregistrata cu succes.</p>
+        <p>Veti fi contactat telefonic pentru confirmare.</p>
+        <a href="{{ url_for('index') }}" class="btn btn-default" style="margin-top: 20px;">Inapoi la Prima Pagina</a>
+    </div>
+</section>
+{% endblock %}

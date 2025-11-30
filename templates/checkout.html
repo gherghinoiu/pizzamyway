@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block title %}Finalizare Comanda - Pizza MyWay Craiova{% endblock %}
+{% block content %}
+<section class="checkout-section" style="padding: 50px 0;">
+    <div class="container">
+        <h3 class="title">Finalizare Comanda</h3>
+        <div class="separator" style="margin-bottom: 30px;"></div>
+
+        <div class="row">
+            <div class="col-md-7">
+                <h4>Detalii Livrare</h4>
+                <form action="{{ url_for('checkout') }}" method="POST" id="checkout-form">
+                    <div class="form-group">
+                        <label for="name">Nume si Prenume *</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefon *</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Adresa de Livrare *</label>
+                        <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="notes">Observatii (ex: rest de la 100 lei, interfon)</label>
+                        <textarea class="form-control" id="notes" name="notes" rows="2"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="payment_method">Metoda de Plata</label>
+                        <select class="form-control" id="payment_method" name="payment_method">
+                            <option value="cash">Numerar</option>
+                            <option value="card">Card la livrare</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-danger btn-lg">Trimite Comanda</button>
+                </form>
+            </div>
+            <div class="col-md-5">
+                <h4>Sumar Comanda</h4>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Produs</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in cart_items.values() %}
+                            <tr>
+                                <td>{{ item.name }} x {{ item.quantity }}</td>
+                                <td>{{ item.price * item.quantity }} lei</td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                <th>Total General</th>
+                                <th>{{ cart_total }} lei</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
